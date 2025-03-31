@@ -8,12 +8,16 @@ i. Print all numbers from 1 to 100 using a for loop.'''
 
 
 ''' ii. Write a program to print the sum of the first n natural numbers. (n*n+1/ 2)'''
+# METHOD 1:
+sum=0
+for i in range(1,21):
+  sum +=i
+print(sum)  # 210
 
-# sum=0
-# for i in range(1,20):
-#   sum +=i
+# METHOD 2:
+n=20
 
-# print(sum)
+print(n*(n+1)/2)  # 210.0
 
 
 '''iii. Print all even numbers between 1 and 50 using a while loop.'''
@@ -36,10 +40,11 @@ i. Print all numbers from 1 to 100 using a for loop.'''
 #     print(i, '*',j,'=',i*j )
     
 
-
-# for i in range(1,21):
-#   for j in range(1,11):
-#     # print(i,'*',j,'=',i*j)
+# print every table upto 20
+for i in range(1,11):
+  for j in range(1,21):
+    print(i,'*',j,'=',i*j)
+  print('---------**----------')
   
 
 '''v. Reverse a number using a while loop. 1. Also can we get the sum of all the digits.'''
@@ -64,14 +69,83 @@ print(rev_num)
 
 '''vi. Write a program to count the number of digits in a given number using a while loop.'''
 
+'''count the digits'''
+num=54312
+count=0
+while num > 0:
+  rem = num % 10 
+  count+=1      
+  num = num // 10
+
+print(count)   # 5
+
+
+''' sum of digits'''
+num=54312
+sum=0
+while num > 0:
+  rem = num % 10 
+  sum=rem+sum      
+  num = num // 10  
+
+print(sum)    # 15
+
+
+'''3. print only multiple of 3 from that number'''
+''' using while loop''' 
+num = 654312
+while num > 0:
+    rem = num % 10  # Extract the last digit
+    if rem % 3 == 0:
+        print(rem, 'divisible by 3')
+    num = num // 10  # Remove the last digit
+
+# output: 
+# 3 divisible by 3
+# 6 divisible by 3
+
+# === Code Execution Successful ===
+
+'''using for loop'''
+
+num = 54312
+
+for digit in str(num): 
+    if int(digit) % 3 == 0:  
+        print(digit,' is divisible by 3')
 
 
 '''vii. Write a program that keeps asking the user to enter numbers until they enter a negative number. Use a while loop.'''
+
+# # using break
+# while True :
+#   num1 = int(input('enter a non-negative number '))
+#   if num1<0:
+#     print('negative number you did not followe d the condition')
+#     break 
+
+
+# # without using break
+# num1 = int(input('enter a non-negative number '))
+# while num1 >= 0:
+#   print(num1)
+#   num1 = int(input('enter a non-negative number '))
 
 
 
 
                             #  '''b. Medium Questions:'''
+
+'''i. Print the first 10 terms of the Fibonacci series using a for loop.'''
+# n=20
+# num1, num2 = 0 , 1
+# print(num1,'\n',num2)
+# for i in range(1,n):
+#   num3=num1+num2
+#   print(num3)
+#   num1=num2
+#   num2=num3
+
 
 '''ii. Check if a given number is a prime number using a for loop.'''
 # num=97
@@ -102,3 +176,46 @@ print(rev_num)
 #   if i%3==0 and i%5==0 :
 #     print(i)
 
+
+'''v. Implement a menu-driven program where the user can choose to: 
+1. Find the square of a number. 
+2. Find the cube of a number. 
+3. Exit. '''
+
+
+
+'''vi. Implement a basic login system where the user has three attempts to enter the correct password using a loop.'''
+# 1 time right
+db_username='john'
+db_password=12345
+
+
+input_usename = input('enter usename')
+input_password = input('enter password')
+
+if input_usename == db_username  and  db_password == input_password:
+  print('login successful')
+else:
+  print('login failed')
+
+# now giving 3 attempts condition ?
+
+db_username='john'
+db_password=12345
+
+rem_attempts = 3
+
+while rem_attempts > 0:
+
+  input_usename = input('enter usename')
+  input_password = input('enter password')
+
+  if input_usename == db_username  and  db_password == input_password:
+    print('login successful')
+    break  # if we dont use break it again asks for username
+  else:
+    rem_attempts -= 1
+    if rem_attempts == 0:
+      print('try after 24 hrs')
+    else:
+      print('login failed', 'you still have', rem_attempts)
